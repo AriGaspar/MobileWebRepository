@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrambler</title>
+    <script>
+        var current_word ="";
+        var words = ["perform","romance","corner","farmer","opera","crane","racoon","norm","charpan","nap","pee","fan","pro","ape","mop","one","pen","era","romancer","forearm","remap","map","man","farm","reef","crap","came","come","crop","open","cero","cane","rare","pace","peace","care","moan","amen","race","near","macro","career","reopen","framer","nearer","reform","maroon","reaper","compare","form"]
+        var guessed_words = []
+
+        function letter_btn(letter){
+            if (current_word.length >= 15){
+                return;
+            }
+            current_word+=letter;
+            document.getElementById("building_word").innerHTML=current_word;
+        }
+
+        function push(){
+            if( words.includes(current_word) && guessed_words.length < 50  && !isAlreadyGuessed(current_word) ){
+                guessed_words.push(current_word);
+                let it = Math.ceil( guessed_words.length/10 ) ;
+                for (let i = 1; i <= it; i++) {
+                    let r = (guessed_words.length-10 >= 0) ?10*i :guessed_words.length%10
+                    var text = get_html_list_from_array( guessed_words.slice( 10*(i-1) , r) );
+                    document.getElementById("word_list"+i).innerHTML=text;    
+                }
+            }
+            current_word = "";
+            document.getElementById("building_word").innerHTML=current_word;
+        }
+
+        function isAlreadyGuessed(word){
+            return ( guessed_words.includes(word) ) ?true:false;
+        }
+
+        function get_html_list_from_array(array){
+            let text = "<ul>";
+            for (let i = 0; i < array.length; i++) {
+                text += "<li>" + array[i] + "</li>";
+            }
+            text += "</ul>";
+            return text;
+        }
+
+
+        function delete_all(){
+            current_word="";
+            document.getElementById("building_word").innerHTML="";;
+        }
+
+        
+    </script>
+    <style>
+
+    .btn{
+        background-color:bisque;
+        font-family: 'Futura', Arial, Helvetica, sans-serif;
+        font-size: 25px;
+        color: rgb(42, 42, 42);
+        height: 75px;
+        width: 75px;
+        border-radius: 50px;
+        border-color: rgb(96, 73, 69);
+        border-style: solid;
+        margin: 4px;
+        cursor: pointer;
+    }
+    button:hover {
+        box-shadow: inset 0 0 0 50px rgba(106, 1, 1, 0.5);
+    }
+    body{
+        background-color: rgb(0, 15, 15);
+        padding: 25px;
+    }
+    .title{
+        font-family: 'Futura', Arial, Helvetica, sans-serif;
+        font-size: 45px;
+        color: bisque;
+        letter-spacing: 30px;
+    }
+
+    .heading1{
+        font-family: 'Futura', Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        color: rgb(255, 181, 181);
+        letter-spacing: 4px;
+    }
+
+    .building_word{
+        font-family: 'Futura', Arial, Helvetica, sans-serif;
+        font-size: 25px;
+        color: rgb(177, 241, 255);
+        letter-spacing: 5px;
+        padding: 0;
+        margin: 0;
+    }
+    .delete_btn{
+        font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+        padding: 0;
+        border: none;
+        background: none;
+        color: red;
+        font-size: 25px;
+        cursor: pointer;
+    }
+    .innerTable{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    .enter_btn{
+        padding-bottom: 45px;
+        font-family: 'Futura', Arial, Helvetica, sans-serif;
+        padding: 0;
+        margin: 0;
+        border: none;
+        background: none;
+        font-size: 50px;
+        color: rgb(110, 34, 34);
+        cursor: pointer;
+        letter-spacing: 15px;
+        
+    }
+    .enter_btn:hover{
+        color: rgb(204, 54, 54);
+        border: 0;
+        background-color: 0;
+        background: 0;
+        border: none;
+        background: none;
+        box-shadow: none;
+    }
+
+    .word_list{
+        font-family: 'Futura', Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        color: rgb(255, 177, 217);
+        letter-spacing: 5px;
+        padding: 0;
+        margin: 0;
+        width: 147.5px;
+        height: 250px;
+    }
+
+    </style>
+</head>
+<body>
+<center>
+    <table border="0"  >
+        <tbody align="center">
+            <tr>
+                <td>
+                    <p class="title" >SCRAMBLER</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="btn" onclick="javascript:letter_btn('p')" >P</button>
+                    <button class="btn" onclick="javascript:letter_btn('e')" >E</button>
+                    <button class="btn" onclick="javascript:letter_btn('r')" >R</button>
+                    <button class="btn" onclick="javascript:letter_btn('f')" >F</button>
+                    <button class="btn" onclick="javascript:letter_btn('o')" >O</button>
+                    <button class="btn" onclick="javascript:letter_btn('r')" >R</button>
+                    <button class="btn" onclick="javascript:letter_btn('m')" >M</button>
+                    <button class="btn" onclick="javascript:letter_btn('a')" >A</button>
+                    <button class="btn" onclick="javascript:letter_btn('n')" >N</button>
+                    <button class="btn" onclick="javascript:letter_btn('c')" >C</button>
+                    <button class="btn" onclick="javascript:letter_btn('e')" >E</button>
+                </td>
+            </tr>
+            <tr style="width: 839px; height: 153.5px;">
+                <td >
+                    <table class="" border="0" style="width: 100%; ">
+                        <tr>
+                            <td align="center" style="height: 36px;"" >
+                                <p class="building_word" id = "building_word" ></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <button class="enter_btn" onclick="javascript:push()" >PUSH</button>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr style="width: 839px; height: 250px;">
+                <td align="left">
+                    <p class="heading1" >GUESSED WORDS</p>
+                    <table border="0" style="width: 100%; height: 250px;">
+                        <tr >
+                            <td> <p class = "word_list" id = "word_list1" ></p> </td>
+                            <td> <p class = "word_list" id = "word_list2" ></p> </td>
+                            <td> <p class = "word_list" id = "word_list3" ></p> </td>
+                            <td> <p class = "word_list" id = "word_list4" ></p> </td>
+                            <td> <p class = "word_list" id = "word_list5" ></p> </td>
+
+                        </tr>
+
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</center>
+
+
+
+</body>
+</html>

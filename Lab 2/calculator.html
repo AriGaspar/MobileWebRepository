@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+<script>
+    var operationBoxContent = "";
+    const specialChar = [ '*', '/', '+', '-'];
+    function button_numbers(num){
+        //Checks if the last character of the operation box is an operand, to stop adding more operands
+        if ( (specialChar.includes(operationBoxContent[ operationBoxContent.length-1]) 
+            && specialChar.includes(num)) 
+            || (operationBoxContent.length == 0 
+            && specialChar.includes(num))){
+            return;
+        }
+        let p = document.getElementById("operationBox").style.fontSize;
+        if(operationBoxContent.length >= 15){
+            return;
+        }
+        operationBoxContent+=num;
+        document.getElementById("operationBox").value = operationBoxContent;
+    }
+    function calculate(){
+        if ( specialChar.includes(operationBoxContent[ operationBoxContent.length-1]) || operationBoxContent.length == 0 ){
+            return;
+        }
+        while( true ){
+            var s = get_operand_numbers();
+            if (s.length <= 0 ) return;
+            for (let i = 0; i < s.length; i++) {
+                if(operationBoxContent[0]=="-" && s.length == 1 ){
+                    return;
+                }
+                determine_operation(operationBoxContent , s[i]);
+            }
+        }
+    }
+    function determine_operation(operation , op){
+        if (operation.indexOf(op) != -1){
+            //calculates the first number 
+            var s = get_operand_numbers();
+            if ( operation[0] == "-" && s.length >= 2){
+                operation = "0"+operation;
+                console.log(operation+"///////");
+            }
+            let i = operation.indexOf(op) - 2; // to check the number before 
+            let last_index = operation.indexOf(op); // this index must contain a number (actually is the operand character, but used in substring does not matter)
+            let first_index = 0;
+            while ( i >= 0 ) {
+                if (specialChar.includes( operation[i] )  ){
+                    first_index = i+1;
+                    break;
+                }
+                i--;
+            }
+            let num1 = parseFloat(operation.substring(first_index , last_index));
+            let very_first_operation_index = first_index; //first index of the operation, the last one is the 'last_index' after calculating the second number
+            //calculates the second number 
+            i = operation.indexOf(op) + 2;
+            first_index = operation.indexOf(op) + 1;
+            last_index = operation.length;
+            while (i < operation.length) {
+                if (specialChar.includes( operation[i] )){
+                    last_index = i;
+                    break;
+                }
+                i++;
+            }
+            let num2 = parseFloat(operation.substring(first_index , last_index));
+            let result = calculate_operation( num1 , op , num2 );
+            if (result == "ERROR"){
+                operationBoxContent = result;
+            }else{
+                operationBoxContent = operationBoxContent.split( operation.substring( very_first_operation_index , last_index ) ).join( result );
+            }
+            document.getElementById("operationBox").value = operationBoxContent;
+        }
+    }
+    function calculate_operation( num1 , op , num2 ){
+        switch (op) {
+            case '*':
+                return num1 * num2;
+            case '/':
+                return num2 != 0 ? num1 / num2 : "ERROR" ;
+            case '+':
+                return num1 + num2;
+            case '-':
+                return num1 - num2;
+            default:
+                return "ERROR";
+        }
+    }
+    function get_operand_numbers(){
+        var operands = "";
+        const a = ["*" , "/"];
+        const b = ["+" , "-"];
+        for (let i = 0; i < operationBoxContent.length; i++) {
+            if ( specialChar.includes( operationBoxContent[i] ) ){
+                operands+=operationBoxContent[i];
+            }
+        }
+        for (let i = 0; i < operands.length; i++) {
+            if ( b.includes( operands[i] ) ){
+                for (let j = i; j < operands.length; j++) {
+                    if( a.includes( operands[j] ) ){
+                        var aux = operands[i] ;
+                        operands = operands.substring(0,i) + operands[j] + operands.substring(i+1);
+                        operands = operands.substring(0,j) + aux + operands.substring(j+1);
+                    }
+                }
+            }
+        }
+        return operands
+    }
+    function delete_key(){
+        operationBoxContent =  operationBoxContent.substring(0, operationBoxContent.length-1 );
+        document.getElementById("operationBox").value = operationBoxContent;
+    }
+    function delete_all(){
+        operationBoxContent =  "";
+        document.getElementById("operationBox").value = operationBoxContent;
+    }
+</script>
+<style>
+.calculator_bg{
+    background-color: rgb(31, 54, 78);
+    flex-wrap: wrap;
+}
+
+table {
+    border-collapse:collapse;
+    table-layout:fixed;
+    margin: 100px;
+}
+
+button{
+    background-color: cadetblue;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+    color: white;
+    height: 75px;
+    width: 75px;
+    border-radius: 15px;
+    border-color: chocolate;
+    cursor: pointer;
+}
+
+body{
+    /* background-image: url("https://media.tenor.com/v6j3qu9ZmMIAAAAM/funny-cat.gif"); */
+    background-color: bisque;
+    /* background-repeat: calc(); */
+}
+
+.delete_btn{
+    background-color: indianred ;
+}
+
+.calculate_btn{
+    background-color: rgb(118, 216, 141) ;
+}
+
+.number_btn{
+    background-color: rgb(104, 181, 182) ;
+}
+
+.operationBox{
+    height: 75px; 
+    font-family: 'Courier New', Courier, monospace; 
+    font-size: 26px;
+    width: 237px;
+    border-radius: 15px;
+    border-color: chocolate;
+}
+
+
+</style>
+</head>
+<body>
+<center>
+    <table border="0"   >
+        <div class="calculator_bg">
+            <tbody >
+                <tr>
+                    <td colspan="3">
+                        <input class="operationBox" id="operationBox" type="text" value = ""  disabled>
+                    </td>
+                    <td>
+                        <button onclick="javascript:delete_key()" ><</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="delete_btn" onclick="javascript:delete_all()" > <b>C</b></button>
+                    </td>
+                    <td>
+                        <button onclick="javascript:button_numbers('/')" >/</button>
+                    </td>
+                    <td>
+                        <button onclick="javascript:button_numbers('*')" >*</button>
+                    </td>
+                    <td>
+                        <button onclick="javascript:button_numbers('-')" >-</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="number_btn" onclick="javascript:button_numbers(1)" >1</button>
+                    </td>
+                    <td>
+                        <button class="number_btn" onclick="javascript:button_numbers(2)" >2</button>
+                    </td>
+                    <td>
+                        <button class="number_btn" onclick="javascript:button_numbers(3)" >3</button>
+                    </td>
+                    <td rowspan="2">
+                        <button onclick="javascript:button_numbers('+')" style="height: 155px;" >+</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="number_btn" onclick="javascript:button_numbers(4)"  >4</button>
+                    </td>
+                    <td>
+                        <button class="number_btn" onclick="javascript:button_numbers(5)"  >5</button>
+                    </td>
+                    <td>
+                        <button class="number_btn" onclick="javascript:button_numbers(6)"  >6</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="number_btn" onclick="javascript:button_numbers(7)"  >7</button>
+                    </td>
+                    <td>
+                        <button class="number_btn" onclick="javascript:button_numbers(8)"  >8</button>
+                    </td>
+                    <td>
+                        <button class="number_btn" onclick="javascript:button_numbers(9)"  >9</button>
+                    </td>
+                    <td rowspan="2">
+                        <button class="calculate_btn" onclick="javascript:calculate()" style="height: 155px;"  >=</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button onclick="javascript:button_numbers('.')"  >.</button>
+                    </td>
+                    <td colspan="2">
+                        <button class="number_btn" style="width:100%;" onclick="javascript:button_numbers(0)"  >0</button>
+                    </td>
+                </tr>
+            </tbody>
+        </div>
+
+    </table>
+</center>
+
+
+</body>
+</html>
