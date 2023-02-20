@@ -1,0 +1,252 @@
+body{
+    margin: 0;
+    background-color: lightsalmon;
+    font-family: 'DIN Alternate', Courier, monospace;
+}
+
+.card img{
+    width: 190px;
+    height: 190px;
+    border-radius: none;
+}
+.popup{
+    float: left;
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    width: 100%; 
+    height: 100%;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    left:0px; 
+    background-color: rgba(0, 0, 0, 0.408);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+}
+.popup td {
+    max-width: 280px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.bigger-card{
+    height: 300px;
+    width: 600px;
+    background-color: white;
+}
+.bigger-card .content{
+    padding-left: 20px;
+    margin: 0;
+}
+.bigger-card .content button{
+    height: 40px;
+    width: 100px;
+    background-color: salmon;
+    color: #ffffff;
+    font-size: 15px;
+    border: 0;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.bigger-card .content button:hover{
+    background-color: rgb(255, 4, 4);
+    color: rgb(255, 211, 198);
+}
+.bigger-img{
+    height: 300px;
+    width: 300px;
+    margin: 0;
+    padding: 0;
+}
+.card{
+    width: 200px;
+    height: 260px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 10px 5px 5px rgba(45, 22, 7, 0.303);
+    border-radius: 2px;
+    padding: 9px;
+    margin: 15px;
+    cursor: pointer;
+}
+
+.card table{
+    width: 130px;
+    margin: none;
+}
+
+.main-table{
+    padding: 30px;
+    padding-top: 90px;
+    margin-top: 60px;
+    margin: 20px;
+}
+
+.grid-container{
+    margin-top: 10px;
+    display: inline-grid;
+    column-gap: 45px;
+    grid-template-columns: auto auto auto auto auto;
+}
+
+.banner{
+    height: 50px;
+    width: 100%;
+    max-width: 100%;
+    /* padding: 10px; */
+    /* padding-left: 24px; */
+    margin: 0px;
+    /* text-align: center; */
+    background: #574444;
+    color: rgb(38, 0, 0);
+    font-size: 30px;
+}
+
+.header{
+    width: 97.6311%;
+    max-width: 100%;
+    padding: 10px;
+    padding-left: 24px;
+    margin: 0px;
+    text-align: center;
+    background: #ffffff;
+    color: rgb(38, 0, 0);
+    font-size: 30px;
+    height: 90px;
+}
+.header table{
+    width: 100%;
+}
+.header .cart{
+    padding-right: 35px;
+}
+.header button{
+    border: 0;
+    background-color: none;
+    cursor: pointer;
+    background: none;
+}
+.header td{
+    padding-left: 13px;
+    padding-right: 13px;
+}
+.header img{
+    width: 60px;
+    height: 60px;
+    border-radius: none;
+}
+.banner ul{
+    font-size: 17px;
+    list-style-type:none;
+    /* background-color:salmon; */
+    height:50px;
+    overflow:hidden;
+    align-items: center;
+    margin: 0;
+}
+.banner li{
+    float:left;
+}
+.banner li a, .drp{
+    display: inline-block;
+    color: salmon;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration:none;
+}
+.banner li .menu-item{
+    display:inline-block;
+}
+.banner .menu-content{
+    display:none;
+    position:absolute;
+    background-color:#ffffff;
+    z-index:1;
+}
+.banner .menu-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.banner .menu-item:hover .menu-content{
+    display:block;
+}
+
+.cart_bg{
+    float: left;
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    width: 100%; 
+    height: 100%;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    left:0px; 
+    background-color: rgba(0, 0, 0, 0.408);
+    display: none;
+    justify-content: right;
+    align-items: right;
+    z-index: 9;
+}
+
+.cart-slide{
+    height: 100vh;
+    width: 600px;
+    background-color: white;
+}
+
+.cart_bg table{
+    padding: 20px;
+}
+
+.cart_bg img{
+    width: 70px; 
+    height: 70px;
+}
+.cart_bg .item{
+    border-radius: 5px;
+    background-color: lightsalmon;
+    margin: 10px;
+    margin-left: 20px;
+    font-size: 20px;
+}
+.cart_bg .grid-container{
+    margin-top: 10px;
+    display: inline-grid;
+    column-gap: 45px;
+    grid-template-columns: auto ;
+}
+
+.close-cart{
+    float: right;
+    margin: 0px;
+    padding: 30px;
+}
+.close-cart button{
+    border: 0;
+    background-color: none;
+    cursor: pointer;
+    background: none;
+}
+.cart_bg table{
+    margin: 0;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart_bg td{
+    padding-left: 5px;
+}
+.cart-card{
+    background-color: lightsalmon;
+    border-radius: 4px;
+    margin-left: 10px;
+    color: #ffffff;
+    font-size: 21px;
+}

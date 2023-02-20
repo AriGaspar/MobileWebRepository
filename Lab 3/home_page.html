@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cats </title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/myjavascript.js" ></script>
+</head>
+<body>
+    <div class="header">
+        <table border="0">
+            <tr>
+                <td style="width: 54px;" align="left">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2203/2203933.png" alt="">
+                </td>
+                <td style="width: 140px;" align="left">
+                    <p>CAT NFTS</p>
+                </td>
+                <td align="right" class="cart" >
+                    <button onclick="javascript:open_cart()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="banner">
+        <ul>
+            <li class="menu-item"><a href="#" class="drp">Wild cats </a>
+                <div class="menu-content">
+                    <a href="#">Caps</a><br>
+                    <a href="#">No Caps</a><br>
+                    <a href="#">Shoes</a><br>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div id="cart_bg" class = "cart_bg"  >
+        <div class="cart-slide">
+            <div class="grid-container" id="cart">
+                <!-- <div class="cart-card">
+                    <table border="0">
+                        <tr>
+                            <td style="width: 80px;">
+                                <img style="width: 80px;height: 80px;" src="https://media.tenor.com/37QVZBJOu6cAAAAd/cats-stan-twitter.gif" alt="">
+                            </td>
+                            <td style="width: 200px;">
+                                Fiasdasdasd asdas
+                            </td>
+                            <td style="width: 120px;">
+                                50
+                            </td>
+                        </tr>
+                    </table>
+                </div> -->
+            </div>
+            <div class="close-cart">
+                <button onclick="javascript:close_cart()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class = "popup" id = "popup" >
+        <div class="bigger-card">
+            <table style="border-collapse: collapse;border: 0px;">
+                <tbody>
+                    <tr>
+                        <td align="left" >
+                            <img id = "card_img" class="bigger-img" onclick="javascript:close_popup()" src="https://media.tenor.com/37QVZBJOu6cAAAAd/cats-stan-twitter.gif" alt="">
+                        </td>
+                        <td align="left" class = "content">
+                            <h1 id = "card_title">
+                                <!-- Cats Fighting -->
+                            </h1>
+                            <h2 id="card_stars"></h3>
+                            <h2 id="card_price">
+                                <!-- $50.00 -->
+                            </h2>
+                            <h2>
+                                <button id="addCartButton" onclick="" >Add to Cart</button>
+                            </h2>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="grid-container" id="grid-container">
+        
+    </div>
+
+</body>
+</html>
