@@ -1,0 +1,39 @@
+<form action="./process_new_student.php" method="POST">
+    <div class="mb-3">
+      <label for="student_name" class="form-label" style="float: left;">Name</label>
+      <input type="text" class="form-control" id="name" name="student_name" >
+    </div>
+
+    <div class="mb-3">
+        <label for="gpa" class="form-label" style="float: left;">GPA</label>
+        <input type="number" step="0.01" class="form-control" id="gpa" name="gpa" >
+    </div>
+
+    <div class="mb-3">
+        <label for="major" class="form-label" style="float: left;">Major</label>
+        <select class="form-select" name="major">
+            <option selected>Select...</option>
+            <option value="Mechanical Engineering">Mechanical Engineering</option>
+            <option value="Electrical Engineering">Electrical Engineering</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Nursing">Nursing</option>
+            <option value="Biology">Biology</option>
+            <option value="Chemestry">Chemestry</option>
+            <option value="Physics">Physics</option>
+            <option value="Phychology">Phychology</option>
+            <option value="Graphic Design">Graphic Design</option>
+            <option value="Art & illustration">Art & illustration</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="enrollment" class="form-label" style="float: left;">Enrollment date</label>
+        <input type="date" class="form-control" id="name" name="enrollment">
+    </div>
+    <div class="mb-3">
+        <label for="graduation" class="form-label" style="float: left;">Graduation date</label>
+        <input type="date" class="form-control" id="name" name="graduation">
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

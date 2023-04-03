@@ -1,0 +1,11 @@
+<div class="card" style="width: 18rem;">
+                      <img src="img/faculty/Kyle-Agee.webp" class="card-img-top" alt="faculty">
+                      <div class="card-body">
+                        <h5 class="card-title">Kyle Agee</h5>
+                        <p class="card-text" style="margin-bottom: 1px !important;">Computer Science</p>
+                        <p class="card-text" style="margin-top: 1px !important;margin-bottom: 1px !important;">ENG/CS</p>
+                          <div style="opacity: 50%; margin-top: 1px;">
+                              Joined in 2016-23-12
+                          </div>
+                      </div>
+                  </div>

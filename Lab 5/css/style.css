@@ -1,0 +1,26 @@
+.grid-container{
+    display: inline-grid;
+    grid-template-columns: auto auto auto auto ;
+    gap: 30px;
+}
+
+.transitionAnim{
+    animation: transitionIn 1000ms;
+}
+.cursorPointer{
+    cursor: pointer !important;
+}
+
+.opacity-down{
+    opacity: 50%;
+    margin: 2px;
+}
+
+@keyframes transitionIn {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 100;
+    }
+}
